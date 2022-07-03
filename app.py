@@ -145,6 +145,10 @@ def agregar_localidad():
         nombre = request.form['nombreLocalidad']
         # obtener ID de la etiqueta SELECT de provincias.html
         idProvincia = request.form.get('selectProvincias')
+        # verificar que la nueva localidad no exista
+        if db.session.query(Localidad).filter_by(nombre=nombre).first():
+            flash(f'Ya existe una localidad con el nombre {nombre}','warning')
+            return redirect(url_for('localidades'))
         
         
         # Comienzo la creacion del objecto Localidad
