@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class = "col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Listado de localidades</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Provincia</th>
+                                <th>Localidad</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for localidad in localidades %}
+                                <tr>
+                                    <td>{{localidad.provincia}}</td>
+                                    <td>{{localidad.nombre}}</td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <a href="editar/{{localidad.id}}" class="btn btn-secondary mr-2" aria-label="">Editar</a>
+                                            </span>
+                                            <span class="input-group-btn">
+                                                <a href="borrar/{{localidad.id}}" class="btn btn-danger" aria-label="">Borrar</a>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
+                <div class="col-6">
+                    <div class="card text-center" >
+                        <div class="card-header">
+                            <h3>Nueva Localidad</h3>
+                        </div>
+                        <form action="/agregar_localidad" method="post">
+                            <div class="card-body">
+                                <label>Seleccione una provincia</label>
+                                <select class="form-control" name="selectProvincias">
+                                    {% for prov in provs %}
+                                        <option value="{{prov.id}}">{{prov.nombre}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label>Nombre de la nueva localidad</label>
+                                <input type="text" class="form-control" placeholder="Nombre de Localidad" name="nombreLocalidad">
+                            </div>
+                            <button class="btn btn-success text-center" type="submit">
+                                Guardar
+                            </button>
+                            <p> </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+

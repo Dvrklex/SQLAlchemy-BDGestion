@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{%block body%}
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card text-center" >
+            <div class="card-header">
+                <h3>Editar {{provincia.nombre}}</h3>
+            </div>
+            <form action="/guardar_edicion_provincia" method="post">
+                <input type="text" name="id" value="{{provincia.id}}" style="display: none">
+                <div class="card-body">
+                    <input type="text" class="form-control" value="{{provincia.nombre}}"
+                     name="nombreProvincia">
+                </div>
+                <button class="btn btn-success text-center" type="submit">
+                    Guardar
+                </button>
+                <p> </p>
+            </form>
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+{%endblock%}
+

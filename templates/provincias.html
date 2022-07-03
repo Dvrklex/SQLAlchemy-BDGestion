@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{%block body%}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-6">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Provincia</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prov in provs %}
+                        <tr>
+                            <td>{{prov.nombre}}</td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <a href="editar/{{prov.id}}"class="btn btn-secondary mr-2" aria-label="">Editar</a>
+                                    </span>
+                                    <span class="input-group-btn">
+                                        <a href="borrar/{{prov.id}}" class="btn btn-danger" aria-label="">Borrar</a>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card text-center" >
+                <div class="card-header">
+                    <h3>Nueva Provincia</h3>
+                </div>
+                <form action="/agregar_provincia" method="post">
+                    <div class="card-body">
+                        <input type="text" class="form-control" placeholder="Nombre de Provincia" name="nombreProvincia">
+                    </div>
+                    <button class="btn btn-success text-center" type="submit">
+                        Guardar
+                    </button>
+                    <p> </p>
+                </form>
+            </div>
+            <p> </p>
+            
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

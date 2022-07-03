@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{%block body%}
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card text-center" >
+            <div class="card-header">
+                <h3>Editar {{localidad.nombre}}</h3>
+            </div>
+            <form action="/guardar_edicion_localidad" method="post">
+                <input type="text" name="id" value="{{localidad.id}}" style="display: none">
+                <div class="card-body">
+                    <input type="text" class="form-control" value="{{localidad.nombre}}"
+                     name="nombreLocalidad">
+                </div>
+                <button class="btn btn-success text-center" type="submit">
+                    Guardar
+                </button>
+                <p> </p>
+            </form>
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+{%endblock%}
